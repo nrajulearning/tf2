@@ -14,7 +14,7 @@ resource "aws_internet_gateway" "ntier_igw" {
 
 resource "aws_subnet" "web1" {
     vpc_id              = aws_vpc.ntier.id
-    cidr_block          = var.cidr_block(0)
+    cidr_block          = var.subnet_cidr_range[0]
     availability_zone   = var.az_a
 
     tags                = {
@@ -25,7 +25,7 @@ resource "aws_subnet" "web1" {
 
 resource "aws_subnet" "app1" {
     vpc_id              = aws_vpc.ntier.id
-    cidr_block          = var.cidr_block(2)
+    cidr_block          = var.subnet_cidr_range[2]
     availability_zone   = "var.az_a"
 
     tags                = {
@@ -36,7 +36,7 @@ resource "aws_subnet" "app1" {
 
 resource "aws_subnet" "db1" {
     vpc_id = aws_vpc.ntier.id
-    cidr_block = var.vpc_cidr_range(4)
+    cidr_block = var.subnet_cidr_range[4]
     availability_zone = var.az_a
     tags = {
       "Name" = "ntier-db1"
@@ -46,7 +46,7 @@ resource "aws_subnet" "db1" {
 
 resource "aws_subnet" "web2" {
     vpc_id              = aws_vpc.ntier.id
-    cidr_block          = var.cidr_block(1)
+    cidr_block          = var.subnet_cidr_range[1]
     availability_zone   = var.az_b
 
     tags                = {
@@ -57,7 +57,7 @@ resource "aws_subnet" "web2" {
 
 resource "aws_subnet" "app2" {
     vpc_id              = aws_vpc.ntier.id
-    cidr_block          = var.cidr_block(3)
+    cidr_block          = var.subnet_cidr_range[3]
     availability_zone   = "var.az_b"
 
     tags                = {
@@ -68,7 +68,7 @@ resource "aws_subnet" "app2" {
 
 resource "aws_subnet" "db2" {
     vpc_id = aws_vpc.ntier.id
-    cidr_block = var.vpc_cidr_range(5)
+    cidr_block = var.subnet_cidr_range[5]
     availability_zone = var.az_b
     tags = {
       "Name" = "ntier-db2"
